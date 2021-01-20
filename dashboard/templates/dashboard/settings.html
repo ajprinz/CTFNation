@@ -1,0 +1,61 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+
+      <!-- begin profile -->
+			<div class="profile">
+				<div class="profile-header">
+					<!-- BEGIN profile-header-cover -->
+					<div class="profile-header-cover"></div>
+					<!-- END profile-header-cover -->
+					<!-- BEGIN profile-header-content -->
+					<div class="profile-header-content">
+						<!-- BEGIN profile-header-img -->
+						<div>
+							<img class="profile-header-img m-r-40" src="{{ user.profile.image.url }}">
+						</div>
+						<!-- END profile-header-img -->
+						<!-- BEGIN profile-header-info -->
+						<div class="profile-header-info">
+							<h4 class="mt-0 mb-1">{{ user.username }}</h4>
+							<h5 class="m-t-10 m-b-10">Rank: {{ user.profile.rank }}</h5>
+						</div>
+						<!-- END profile-header-info -->
+					</div>
+				  <!-- END profile-header-content -->
+				</div>
+			</div>
+			<!-- end profile -->
+
+			<!-- begin settings-content -->
+      <!-- begin panel -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">Settings</h4>
+        </div>
+        <div class="panel-body">
+          <!-- begin form (Settings)-->
+          <div class="login-body">
+            <!-- begin form-content -->
+            <div class="login-content">
+              <form method="POST" enctype="multipart/form-data" class="margin-bottom-0">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                  {{ u_form.as_p }}
+									{{ p_form.as_p }}
+                </fieldset>
+                <div class="login-buttons">
+                  <button type="submit" class="btn btn-success btn-block btn-md">Update</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- end form (Settings) -->
+        </div>
+      </div>
+      <!-- end panel -->
+
+      <!-- end settings-content -->
+
+
+{% endblock content %}

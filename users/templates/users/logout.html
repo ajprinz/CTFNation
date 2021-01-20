@@ -1,0 +1,173 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	{% if title %}
+    <title>{{ title }} - CTFNation</title>
+  {% else %}
+    <title>CTFNation</title>
+  {% endif %}
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="{% static 'assets/css/default/app.min.css' %}" rel="stylesheet" />
+  <style media="screen">
+    .brand img {
+      max-width: 130px;
+      float: left;
+    }
+
+    .signup-heading {
+      float: right;
+    }
+
+    h2 {
+      width: 400px;
+      display: block;
+      color: #c6ced5;
+      margin: auto;
+      margin-bottom: 30px;
+      font-weight: normal;
+      font-size: initial;
+    }
+
+    fieldset {
+      position: relative;
+    }
+
+    form label {
+      display: none;
+    }
+
+    .helptext {
+      content: "?";
+      padding: 3px 10px 4px;
+      border-radius: 50%;
+      color: #c6ced5;
+      background: #2d353c;
+      cursor: pointer;
+      margin: -29px 10px 0 0;
+      position: absolute;
+      right: 0;
+    }
+
+    form > fieldset > p:nth-of-type(1) > .helptext:hover:after {
+      content: "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.";
+      width: 200px;
+      border-radius: 0;
+      margin: -43px -340px 0 0;
+      position: absolute;
+      top: 38px;
+      left: 63px;
+    }
+
+    form > fieldset > p:nth-of-type(3) > .helptext:hover:after {
+      content: "Your password can't be too similar to personal information. \A Your password must contain at least 8 characters. \A Your password can't be a commonly used password. \A Your password can't be entirely numeric.";
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      width: 200px;
+      border-radius: 0;
+      margin: -43px -340px 0 0;
+      position: absolute;
+      top: 38px;
+      left: 63px;
+    }
+
+    form > fieldset > p:nth-of-type(4) > .helptext:hover:after {
+      content: "Enter the same password as before, for verification.";
+      width: 200px;
+      border-radius: 0;
+      margin: -43px -340px 0 0;
+      position: absolute;
+      top: 38px;
+      left: 63px;
+    }
+
+    .helptext:hover:before {
+      content: "";
+      position: absolute;
+      margin: 4px -26px 0 0;
+      right: 0;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+      border-right: 6px solid #d41b23;
+    }
+
+    .errorlist {
+      color: #ffffff;
+      background: #d41b23;
+      border-radius: 5px;
+      padding: 5px 10px;
+      list-style: none;
+    }
+
+    button.btn.btn-success.btn-block.btn-md {
+      margin-bottom: 25px;
+    }
+
+    .signup-footer a {
+      color: #d41b23;
+    }
+  </style>
+	<!-- ================== END BASE CSS STYLE ================== -->
+</head>
+<body class="pace-top">
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade show"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade">
+		<!-- begin login -->
+		<div class="login login-v1">
+			<!-- begin login-container -->
+			<div class="login-container">
+				<!-- begin login-header -->
+				<div class="login-header">
+					<div class="brand">
+						<img src="{% static 'assets/img/svg/CTFNationLogo.svg' %}" alt="CTFNation Logo">
+            <div class="signup-heading">
+              <span>CTFNation - Logout</span>
+              <small>You've been logged out.</small>
+            </div>
+					</div>
+				</div>
+				<!-- end login-header -->
+
+				<!-- begin form (Sign up)-->
+				<div class="login-body">
+					<!-- begin login-content -->
+          <h2>You've been logged out.</h2>
+					<div class="login-content">
+            <div class="border-top pt-3">
+              <span class="signup-footer"><a href="{% url 'login' %}">Login Again</a></span>
+            </div>
+					</div>
+          <!-- end form (Sign up) -->
+					<!-- end login-content -->
+				</div>
+				<!-- end login-body -->
+			</div>
+			<!-- end login-container -->
+		</div>
+		<!-- end login -->
+	</div>
+	<!-- end page container -->
+
+  <!-- ================== BEGIN BASE JS ================== -->
+  <script src="{% static 'assets/js/app.min.js' %}"></script>
+  <script src="{% static 'assets/js/theme/default.min.js' %}"></script>
+  <script type="text/javascript">
+    App.settings({
+      ajaxMode: true,
+      ajaxDefaultUrl: '',
+      ajaxType: 'GET',
+      ajaxDataType: 'html'
+    });
+  </script>
+  <!-- ================== END BASE JS ================== -->
+</body>
+</html>

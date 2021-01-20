@@ -1,0 +1,103 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+			<!-- begin page-header -->
+			<h1 class="page-header">Profile <small>Player statistics, achievements, and recent activity.</small></h1>
+			<!-- end page-header -->
+
+			<!-- begin panel -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">User</h4>
+				</div>
+				<div class="panel-body">
+					<div>
+						<div style="width: 150px;height: 150px;border-radius: 8px;overflow: hidden;background: url({{ user.profile.image.url }}); background-size: cover; background-position: center;background-repeat: no-repeat;display: inline-block;margin-right: 20px; float: left;"></div>
+						<h5>{{ user.username }}</h5>
+						<p><span style="font-weight: 600;">Rank: </span>{{ user.profile.rank }}</p>
+						<div class="progress rounded-corner">
+						  <div id="progressbar" class="progress-bar" style="background-color: #d41b23;">- XP To Next Rank</div>
+						</div>
+						<form id="updatexp" method="post">
+						  {% csrf_token %}
+						  {{ updatexp_form.as_p }}
+						  <input type="submit" value="Increase XP" />
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- end panel -->
+
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin panel -->
+				<div class="col-md-6" data-sortable="false">
+					<div class="panel panel-default" data-sortable="false">
+						<div class="panel-heading" data-sortable="false">
+							<h4 class="panel-title">Service Record</h4>
+						</div>
+						<div class="panel-body">
+							<!-- User Table -->
+							<table class="table" style="text-align:center;">
+								<thead>
+									<tr>
+										<th>Member Since</th>
+										<th>Wins</th>
+										<th>Losses</th>
+										<th>W/L Ratio</th>
+										<th>Kills</th>
+										<th>Deaths</th>
+										<th>K/D Ratio</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><span id="membersince">{{ user.date_joined.year }}</span></td>
+										<td>{{ user.profile.wins }}</td>
+										<td>{{ user.profile.losses }}</td>
+										<td>{{ user.profile.wlratio }}</td>
+										<td>{{ user.profile.kills }}</td>
+										<td>{{ user.profile.deaths }}</td>
+										<td>{{ user.profile.kdratio }}</td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- End User Table -->
+						</div>
+					</div>
+				</div>
+				<!-- end panel -->
+
+				<!-- begin panel -->
+				<div class="col-md-6" data-sortable="false">
+					<div class="panel panel-default" data-sortable="false">
+						<div class="panel-heading" data-sortable="false">
+							<h4 class="panel-title">Timeline</h4>
+						</div>
+						<div class="panel-body">
+						</div>
+					</div>
+				</div>
+				<!-- end panel -->
+			</div>
+			<!-- end row -->
+
+
+
+			<script type="text/javascript">
+				$(document).ready(function () {
+					//handle member since
+					var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+					$("#membersince").text(months[{{ user.date_joined.month }}-1] + ' ' + {{ user.date_joined.year }});
+
+					//handle rank status
+					var nextrank = 50;
+					var currentxp = {{ user.profile.xp }};
+					var nextrankpercent = (currentxp/nextrank)*100;
+					$("#progressbar").width(nextrankpercent + "%");
+					$("#progressbar").text(currentxp + " / " + nextrank);
+				});
+			</script>
+
+
+{% endblock content %}

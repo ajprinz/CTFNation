@@ -1,0 +1,252 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+			<!-- begin page-header -->
+			<h1 class="page-header">Matchmaking <small>Compete with hackers around the world for sweet victory.</small></h1>
+			<!-- end page-header -->
+
+			<!-- begin panel -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">Lobby</h4>
+				</div>
+				<div class="panel-body">
+					<div class="btn-group" style="margin: 15px 0;width: 49%;display: inline-block;float: left;">
+						<h5>Capture The Flag</h5>
+						<div id="game-name"></div>
+				    <div id="message-container"></div>
+					</div>
+					<button name="exit_lobby" id="forcestart" class="btn btn-success btn-block btn-md" style="margin: 15px 3px;width: 24%;display: inline-block;float: right;background: #fff;color: #d41b23;">Force Start</button>
+					<button type="submit" href="{% url 'matchmaking' %}" data-toggle="ajax" name="exit_lobby" class="btn btn-success btn-block btn-md" style="margin: 15px 3px;width: 24%;display: inline-block;float: right;background: #fff;color: #d41b23;">Leave Lobby</button>
+					<!-- User Table -->
+					<table class="table">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Rank</th>
+								<th>Username</th>
+								<th>Member Since</th>
+								<th>Wins</th>
+								<th>Losses</th>
+								<th>W/L Ratio</th>
+								<th>Kills</th>
+								<th>Deaths</th>
+								<th>K/D Ratio</th>
+								<th width="1%"></th>
+							</tr>
+						</thead>
+					  <tbody>
+					    <tr>
+								<td><img id="user-1" class="" src=""><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin-top: -20px;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+							</tr>
+							<tr>
+								<td><img id="user-2" class="" src=""><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin-top: -20px;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+							</tr>
+							<tr>
+								<td><img id="user-3" class="" src=""><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin-top: -20px;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+							</tr>
+							<tr>
+								<td><img id="user-4" class="" src=""><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin-top: -20px;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+							</tr>
+							<tr>
+								<td><img id="user-5" class="" src=""><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin-top: -20px;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+							</tr>
+							<tr>
+								<td><img id="user-6" class="" src=""><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin-top: -20px;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+							</tr>
+							<tr>
+								<td><img id="user-7" class="" src=""><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin-top: -20px;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+							</tr>
+							<tr>
+								<td><img id="user-8" class="" src=""><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin-top: -20px;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+							</tr>
+							<tr>
+								<td><img id="user-9" class="" src=""><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin-top: -20px;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+							</tr>
+							<tr>
+								<td><img id="user-10" class="" src=""><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin-top: -20px;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+								<td><div class="user progress rounded-corner" style="width: 40%;height: 8px;margin: 7px 0;"><div class="progress-bar bg-grey progress-bar-striped progress-bar-animated" style="width: 100%"></div></div></td>
+							</tr>
+					  </tbody>
+					</table>
+					<!-- End User Table -->
+				</div>
+			</div>
+			<!-- end panel -->
+
+
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			function getParameterByName(name, url) {
+			    if (!url) {
+			      url = window.location.href;
+			    }
+			    name = name.replace(/[\[\]]/g, "\\$&");
+			    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+			        results = regex.exec(url);
+			    if (!results) return null;
+			    if (!results[2]) return '';
+			    return decodeURIComponent(results[2].replace(/\+/g, " "));
+			}
+
+
+
+
+			$(document).ready(function () {
+
+			    // var game = getParameterByName('game');
+					var game = "Capture-The-Flag";
+					var players = [];
+					var imageIDs =[$("#user-1"),$("#user-2"),$("#user-3"),$("#user-4"),$("#user-5"),$("#user-6"),$("#user-7"),$("#user-8"),$("#user-9"),$("#user-10")];
+
+			    if(game != undefined && game != null) {
+			        // Note that the path doesn't matter right now; any WebSocket
+			        // connection gets bumped over to WebSocket consumers
+			        socket = new WebSocket("ws://" + window.location.host + "/" + game);
+			        socket.onmessage = function (e) {
+								if (e.data != "Finding players..." && e.data != "Players found! The match is about to start...") {
+									// store player usernames for ajax
+									console.log(e.data)
+									players.push(JSON.parse(e.data));
+									console.log(players);
+
+									// Change DOM to show all players
+									$.each(players, function(i, players){
+										$(".user")[i].replaceWith();
+										imageIDs[i].addClass("img-rounded width-50 height-50").attr("src", players.imageurl);
+										$(".user")[i].replaceWith(players.rank);
+										$(".user")[i].replaceWith(players.username);
+										$(".user")[i].replaceWith(players.membersince);
+										$(".user")[i].replaceWith(players.wins);
+										$(".user")[i].replaceWith(players.losses);
+										$(".user")[i].replaceWith(players.wlratio);
+										$(".user")[i].replaceWith(players.kills);
+										$(".user")[i].replaceWith(players.deaths);
+										$(".user")[i].replaceWith(players.kdratio);
+									});
+
+
+									// when 10 players are selected transfer to game via ajax
+									if (players.length == 10) {
+										start();
+									}
+								}
+
+								else {
+									$('#message-container').append('<div>' + e.data + '</div>');
+								}
+			        };
+
+			        socket.onopen = function () {
+			            socket.send("");
+			        };
+
+			        // Call onopen directly if socket is already open
+			        if (socket.readyState == WebSocket.OPEN) socket.onopen();
+			    } else {
+			        $('#game-name').html('Please select a game by adding querystring ?game=you_room_of_choice');
+			    }
+
+
+					function start(){
+
+						Swal.fire({
+							title: 'Match Found',
+							text: 'The game is about to begin. Good luck.',
+							icon: 'success',
+							showConfirmButton: false,
+							timer: 10000,
+							timerProgressBar: true,
+							padding: 50,
+							onClose: () => {
+								$.ajax({
+									type: "GET",
+									url: "{% url 'game' %}",
+									data: players,
+									success: function(result){
+										// change the page and url
+										$('#content-main').html($(result).find('#content-main').html()),
+										document.title = $(result).filter('title').text()
+										window.history.pushState({"html":result.html,"pageTitle":result.pageTitle},"", "game-" + Math.round(Math.random() * 1000000000))
+
+										console.log(players);
+										console.log("Starting game...");
+
+										var imageIDs =[$("#user-1"),$("#user-2"),$("#user-3"),$("#user-4"),$("#user-5"),$("#user-6"),$("#user-7"),$("#user-8"),$("#user-9"),$("#user-10")];
+
+										// Change DOM to show all players
+										$.each(players, function(i, players){
+											$(".user")[i].replaceWith();
+											imageIDs[i].addClass("img-rounded height-50").attr("src", players.imageurl);
+											$(".user")[i].replaceWith(players.rank);
+											$(".user")[i].replaceWith(players.username);
+											$(".user")[i].replaceWith("-");
+										});
+
+
+									}
+								});
+							}
+						})
+					}
+
+
+					$('#forcestart').click(function(){
+						start();
+					});
+
+
+			});
+
+
+
+
+		</script>
+
+
+{% endblock content %}

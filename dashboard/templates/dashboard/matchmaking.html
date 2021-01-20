@@ -1,0 +1,73 @@
+{% extends "dashboard/base.html" %}
+{% block content %}
+			<!-- begin page-header -->
+			<h1 class="page-header">Matchmaking <small>Compete with hackers around the world for sweet victory.</small></h1>
+			<!-- end page-header -->
+
+			<!-- begin panel -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">Game Type</h4>
+				</div>
+				<div class="panel-body">
+					<div>
+						<h5>Select Game Type</h5>
+						<div class="btn-group" style="width:100%;display:block;">
+							<select id="matchmakingselect" class="btn btn-default dropdown-toggle" style="margin: 15px 0;width: 49%;display: inline-block;float: left;" name="game-type" onchange="changeEvent()">
+								<option value="DEFAULT">Select Game Type</option>
+								<option value="CTF">Capture The Flag</option>
+								<option value="KOTH">King Of The Hill</option>
+							</select>
+							<button type="submit" href="{% url 'lobby' %}" data-toggle="ajax" name="find_players" class="btn btn-success btn-block btn-md" style="margin: 15px 0;width: 49%;display: inline-block;float: right;">Find Players</button>
+						</div>
+					</div>
+					<div style="width: 100%;clear: both;padding-top: 25px;">
+						<h5>Description</h5>
+						<p id="matchmakingdesciption" style="margin: 15px 0;">Select a game type for a description.</p>
+						<script type="text/javascript">
+							function changeEvent() {
+								var select = document.getElementById("matchmakingselect");
+								var description = document.getElementById("matchmakingdesciption");
+								var defaultSelect = "Select a game type for a description.";
+								var ctf = "Capture The Flag";
+								var koth = "King of the Hill";
+
+								if (select.value == "DEFAULT") {
+									description.innerHTML = defaultSelect;
+								};
+
+								if (select.value == "CTF") {
+									description.innerHTML = ctf;
+								};
+
+								if (select.value == "KOTH") {
+									description.innerHTML = koth;
+								};
+							}
+
+							window.onload = function() {
+								var select = document.getElementById("matchmakingselect");
+								var description = document.getElementById("matchmakingdesciption");
+								var defaultSelect = "Select a game type for a description.";
+								var ctf = "Capture The Flag";
+								var koth = "King of the Hill"
+
+								if (select.value == "DEFAULT") {
+									description.innerHTML = defaultSelect;
+								};
+
+								if (select.value == "CTF") {
+									description.innerHTML = ctf;
+								};
+
+								if (select.value == "KOTH") {
+									description.innerHTML = koth;
+								};
+							}
+						</script>
+					</div>
+				</div>
+			</div>
+			<!-- end panel -->
+
+{% endblock content %}

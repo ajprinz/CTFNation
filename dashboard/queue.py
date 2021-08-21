@@ -1,7 +1,7 @@
 import logging
 import threading
 import time
-import json
+import simplejson as json
 from django.conf import settings
 from channels import Group
 from channels import Channel
@@ -52,11 +52,11 @@ def ws_connect(message):
             'membersince': http_user.date_joined.year,
             'wins': http_user.profile.wins,
             'losses': http_user.profile.losses,
-            # 'wlratio': http_user.profile.wlratio,
-            # 'kills': http_user.profile.kills,
-            # 'deaths': http_user.profile.deaths,
-            # 'kdratio': http_user.profile.kdratio,
-        }),
+            'wlratio': http_user.profile.wlratio,
+            'kills': http_user.profile.kills,
+            'deaths': http_user.profile.deaths,
+            'kdratio': http_user.profile.kdratio,
+        }, use_decimal=True),
     })
 
 

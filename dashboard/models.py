@@ -6,8 +6,9 @@ from PIL import Image
 
 # Create your models here.
 
+
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, unique=True, primary_key=True, related_name="profile", on_delete=models.CASCADE)
     rank = models.IntegerField(default=0)
     xp = models.IntegerField(default=0)
     wins = models.IntegerField(default=0)
@@ -16,13 +17,13 @@ class Profile(models.Model):
     kills = models.IntegerField(default=0)
     deaths = models.IntegerField(default=0)
     kdratio = models.DecimalField(default=0, max_digits=6, decimal_places=2)
-    image = models.ImageField(default='default.svg', upload_to='profile_pics')
+    image = models.ImageField(default='default.png', upload_to='profile_pics')
 
     def __str__(self):
         return f'{self.user.username} Profile'
 
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super(Profile, self).save(*args, **kwargs)
 
         img = Image.open(self.image.path)
 
@@ -33,9 +34,10 @@ class Profile(models.Model):
 
 
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+def create_user_profile(sender, instance=None, created=False, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        Profile.objects.get_or_create(user=instance)
+
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
